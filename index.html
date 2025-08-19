@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Inventory Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- FontAwesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <!-- Chart.js for charts -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+</head>
+<body>
+  <div class="app-shell">
+    <!-- Sidebar -->
+    <aside class="sidebar" aria-label="Main navigation">
+      <div class="logo">
+        <i class="fa-solid fa-box-open"></i>
+        <span>Inventory</span>
+      </div>
+      <nav>
+        <ul class="menu">
+          <li class="menu-item active"><i class="fa-solid fa-gauge"></i><span>Dashboard</span></li>
+          <li class="menu-item"><i class="fa-solid fa-boxes-stacked"></i><span>Inventory</span></li>
+          <li class="menu-item"><i class="fa-solid fa-cart-shopping"></i><span>Sales</span></li>
+          <li class="menu-item"><i class="fa-solid fa-truck"></i><span>Purchases</span></li>
+          <li class="menu-item"><i class="fa-solid fa-plug"></i><span>Integrations</span></li>
+          <li class="menu-item"><i class="fa-solid fa-signal"></i><span>Active Channels</span></li>
+          <li class="menu-item"><i class="fa-solid fa-chart-line"></i><span>Reports</span></li>
+          <li class="menu-item"><i class="fa-regular fa-file-lines"></i><span>Documents</span></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Main -->
+    <main class="main">
+      <!-- Topbar -->
+      <header class="topbar">
+        <div class="search">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="search" id="globalSearch" placeholder="Search"/>
+        </div>
+        <div class="top-actions">
+          <button class="icon-btn" aria-label="Notifications"><i class="fa-regular fa-bell"></i></button>
+          <button class="icon-btn" aria-label="Settings"><i class="fa-solid fa-gear"></i></button>
+          <div class="profile">
+            <span>Zylker</span>
+            <i class="fa-solid fa-chevron-down"></i>
+            <img src="https://i.pravatar.cc/40" alt="Profile"/>
+          </div>
+        </div>
+      </header>
+
+      <!-- Content -->
+      <section class="content">
+        <!-- Row: Sales Activity + Inventory Summary -->
+        <div class="row row-top">
+          <div class="card sales-activity">
+            <div class="card-title">Sales Activity</div>
+            <div class="stats">
+              <div class="stat">
+                <div class="stat-value" id="packed">0</div>
+                <div class="stat-label">TO BE PACKED</div>
+              </div>
+              <div class="stat">
+                <div class="stat-value" id="shipped">0</div>
+                <div class="stat-label">TO BE SHIPPED</div>
+              </div>
+              <div class="stat">
+                <div class="stat-value" id="delivered">0</div>
+                <div class="stat-label">TO BE DELIVERED</div>
+              </div>
+              <div class="stat">
+                <div class="stat-value" id="invoiced">0</div>
+                <div class="stat-label">TO BE INVOICED</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card inventory-summary">
+            <div class="card-title">Inventory Summary</div>
+            <div class="summary-grid">
+              <div class="summary-box">
+                <div class="summary-label">QUANTITY IN HAND</div>
+                <div class="summary-value" id="qtyInHand">0</div>
+              </div>
+              <div class="summary-box">
+                <div class="summary-label">QUANTITY TO BE RECEIVED</div>
+                <div class="summary-value" id="qtyToReceive">0</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Row: Product Details + Top Selling -->
+        <div class="row">
+          <div class="card product-details">
+            <div class="card-title">Product Details</div>
+            <div class="product-grid">
+              <ul class="product-meta">
+                <li><a href="#" class="danger">Low Stock Items</a> <span id="lowStock">0</span></li>
+                <li>All Item Group <span id="itemGroups">0</span></li>
+                <li>All Items <span id="allItems">0</span></li>
+                <li><a href="#" class="danger">Unconfirmed Items</a> <span id="unconfirmed">0</span></li>
+              </ul>
+              <div class="progress-wrap">
+                <canvas id="activeItemsChart" width="140" height="140" aria-label="Active items"></canvas>
+                <div class="progress-center">
+                  <div class="progress-number" id="activePct">0%</div>
+                  <div class="progress-text">Active Items</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card top-selling">
+            <div class="card-title with-kebab">
+              <span>Top Selling Items</span>
+              <button class="icon-btn small" aria-label="More"><i class="fa-solid fa-ellipsis-vertical"></i></button>
+            </div>
+            <div class="items">
+              <div class="item">
+                <img src="https://via.placeholder.com/70x70.png?text=Item+A" alt="Item A">
+                <div class="item-meta">
+                  <div class="item-name">Sample Item A</div>
+                  <div class="item-qty">0 pcs</div>
+                </div>
+              </div>
+              <div class="item">
+                <img src="https://via.placeholder.com/70x70.png?text=Item+B" alt="Item B">
+                <div class="item-meta">
+                  <div class="item-name">Sample Item B</div>
+                  <div class="item-qty">0 sets</div>
+                </div>
+              </div>
+              <div class="item">
+                <img src="https://via.placeholder.com/70x70.png?text=Item+C" alt="Item C">
+                <div class="item-meta">
+                  <div class="item-name">Sample Item C</div>
+                  <div class="item-qty">0 sets</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Row: Purchase Order + Sales Order -->
+        <div class="row">
+          <div class="card purchase-order">
+            <div class="card-title with-meta">
+              <span>Purchase Order</span>
+              <span class="meta">This Month</span>
+            </div>
+            <div class="po-grid">
+              <div>
+                <div class="muted">Quantity Ordered</div>
+                <div class="big" id="poQty">0.00</div>
+              </div>
+              <div>
+                <div class="muted">Total Cost</div>
+                <div class="big blue" id="poCost">₹0.00</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card sales-order">
+            <div class="card-title with-meta">
+              <span>Sales Order</span>
+              <span class="meta">This Month</span>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Channel</th>
+                    <th>Draft</th>
+                    <th>Confirmed</th>
+                    <th>Packed</th>
+                    <th>Shipped</th>
+                    <th>Invoiced</th>
+                  </tr>
+                </thead>
+                <tbody id="salesTableBody">
+                  <tr>
+                    <td>Direct sales</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Controls for demo / refresh -->
+        <div class="row">
+          <div class="card">
+            <div class="card-title">Data Controls</div>
+            <div class="controls">
+              <button id="refreshBtn" class="btn">Refresh from API</button>
+              <button id="seedBtn" class="btn outline">Seed Demo Data (Front-end only)</button>
+              <span class="hint">Assuming DB exists: current default values are 0. "Seed" will only change the UI.</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
