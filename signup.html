@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Account - Inventory Management</title>
+  <link rel="stylesheet" href="login.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="auth-wrap">
+    <div class="auth-card">
+      <h1>Create your account</h1>
+      <p class="subtitle">Join the Inventory Management dashboard</p>
+
+      <form id="signupForm" novalidate>
+        <div class="two-col">
+          <div class="input-group">
+            <label for="fullName">Full name</label>
+            <input type="text" id="fullName" placeholder="e.g. Priya Sharma" required>
+            <small class="error" id="nameErr"></small>
+          </div>
+          <div class="input-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="e.g. priya@example.com" required>
+            <small class="error" id="emailErr"></small>
+          </div>
+        </div>
+
+        <div class="two-col">
+          <div class="input-group">
+            <label for="newUsername">Username</label>
+            <input type="text" id="newUsername" placeholder="Choose a username" required>
+            <small class="error" id="newUserErr"></small>
+          </div>
+          <div class="input-group">
+            <label for="newPassword">Password</label>
+            <div class="password-field">
+              <input type="password" id="newPassword" placeholder="Min 8 chars, strong" required>
+              <button type="button" class="toggle" data-target="newPassword">👁️</button>
+            </div>
+            <div class="strength" id="strengthBar"><span></span></div>
+            <small class="hint">Use at least 8 characters with a mix of letters, numbers & symbols.</small>
+            <small class="error" id="newPassErr"></small>
+          </div>
+        </div>
+
+        <div class="input-group">
+          <label for="confirmPassword">Confirm password</label>
+          <div class="password-field">
+            <input type="password" id="confirmPassword" placeholder="Re-enter your password" required>
+            <button type="button" class="toggle" data-target="confirmPassword">👁️</button>
+          </div>
+          <small class="error" id="confirmErr"></small>
+        </div>
+
+        <label class="checkbox">
+          <input type="checkbox" id="agree" required>
+          <span>I agree to the <a href="#">Terms</a> and <a href="#">Privacy Policy</a>.</span>
+        </label>
+        <small class="error" id="agreeErr"></small>
+
+        <button type="submit" class="btn primary">Create account</button>
+        <p id="signup-msg" class="form-message"></p>
+      </form>
+
+      <p class="switch">Already have an account? <a href="login.html">Sign in</a></p>
+    </div>
+  </div>
+  <script src="signup.js"></script>
+</body>
+</html>
