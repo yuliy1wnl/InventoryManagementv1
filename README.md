@@ -1,3 +1,3 @@
 # InventoryManagementv1
 
-very early version of my projet "INVENTORY MANAGEMENT"
+very early version of my project "INVENTORY MANAGEMENT"
