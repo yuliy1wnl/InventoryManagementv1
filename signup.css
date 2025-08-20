@@ -1,0 +1,89 @@
+:root {
+  --bg:#f4f6f8;
+  --card:#ffffff;
+  --text:#1f2937;
+  --muted:#6b7280;
+  --border:#e5e7eb;
+  --green:#4CAF50;
+  --green-hover:#45a049;
+  --danger:#ef4444;
+}
+
+body {
+  margin:0;
+  background:var(--bg);
+  font-family:'Inter', sans-serif;
+  color:var(--text);
+}
+
+.auth-wrap {
+  min-height:100vh;
+  display:grid;
+  place-items:center;
+  padding:24px;
+}
+
+.auth-card {
+  width:100%;
+  max-width:640px;
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:28px;
+  box-shadow:0 8px 30px rgba(0,0,0,.06);
+}
+
+h1 { margin:0 0 8px; font-size:1.5rem }
+.subtitle { margin:0 0 18px; color:var(--muted) }
+
+.input-group { margin-bottom:14px }
+.input-group label { display:block; margin-bottom:6px; font-size:.9rem }
+.input-group input {
+  width:100%; padding:12px;
+  border:1px solid var(--border);
+  border-radius:10px; font-size:1rem;
+  background:#fbfbfb;
+}
+.input-group input:focus { border-color:#b9c0c8; background:#fff }
+
+.password-field { position:relative }
+.password-field .toggle {
+  position:absolute; right:8px; top:50%; transform:translateY(-50%);
+  border:none; background:transparent; font-size:16px; cursor:pointer;
+}
+
+.two-col {
+  display:grid; grid-template-columns:1fr 1fr; gap:12px;
+}
+@media(max-width:640px) { .two-col { grid-template-columns:1fr } }
+
+.checkbox {
+  display:flex; align-items:flex-start; gap:10px;
+  margin:8px 0 12px;
+  font-size:.9rem;
+}
+
+.btn {
+  width:100%; padding:12px; border-radius:10px;
+  background:var(--green); color:#fff; font-weight:600;
+  cursor:pointer; border:none; font-size:1rem;
+}
+.btn:hover { background:var(--green-hover) }
+
+.form-message { margin-top:10px; font-size:.95rem }
+.error { color:var(--danger); font-size:.85rem; min-height:16px }
+.hint { color:var(--muted); font-size:.8rem }
+
+.strength {
+  height:8px; background:#eef2f7; border-radius:20px;
+  overflow:hidden; margin-top:8px;
+}
+.strength span {
+  display:block; height:100%; width:0;
+  transition:width .25s;
+  background:linear-gradient(90deg,#f87171,#f59e0b,#34d399,#22c55e);
+}
+
+.switch { margin-top:16px; color:var(--muted); font-size:.95rem }
+.switch a { color:var(--green); font-weight:600; text-decoration:none }
+.switch a:hover { text-decoration:underline }
