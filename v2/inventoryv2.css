@@ -1,0 +1,302 @@
+:root {
+  --bg:#f4f6f8;
+  --card:#ffffff;
+  --text:#1f2937;
+  --muted:#6b7280;
+  --sidebar:#1e1e2d;
+  --sidebar-active:#ef4444;
+  --border:#e5e7eb;
+  --blue:#2563eb;
+  --border: #e5e7eb;
+  --green: #4CAF50;
+  --green-hover: #45a049;
+  --danger: #ef4444;
+  --danger-hover: #dc2626;
+  --sidebar-bg: #1f2937;
+  --sidebar-text: #fff;
+  --topbar-bg: #fff;
+  --topbar-text: #1f2937;
+  --topbar-border: #e5e7eb;
+}
+
+/* ===========================
+   Global
+=========================== */
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  font-family: 'Inter', sans-serif;
+  color: var(--text);
+}
+
+/* ===========================
+   Dashboard Layout
+=========================== */
+.app-shell {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* Sidebar */
+.sidebar{
+  width:240px;background:var(--sidebar);color:#fff;padding:20px 0;position:sticky;top:0;height:100vh
+}
+.logo{display:flex;align-items:center;gap:10px;padding:0 20px 12px;font-weight:700;font-size:18px}
+.logo i{font-size:20px}
+.menu{list-style:none;margin:10px 0 0;padding:0}
+.menu-item{display:flex;align-items:center;gap:12px;padding:12px 20px;cursor:pointer;color:#d1d5db}
+.menu-item:hover{background:#2a2a3b}
+.menu-item.active{background:var(--sidebar-active);color:#fff}
+
+
+/* Main Content */
+.main {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Topbar */
+.topbar{
+  display:flex;align-items:center;justify-content:space-between;
+  background:var(--card);border:1px solid var(--border);border-radius:12px;padding:10px 14px;margin-bottom:18px
+}
+.top-actions{display:flex;align-items:center;gap:10px;flex: 1; justify-content: flex-end;}
+.icon-btn{border:none;background:transparent;padding:8px;border-radius:10px;cursor:pointer}
+.icon-btn:hover{background:#f3f4f6}
+.icon-btn.small{padding:6px}
+.profile{display:flex;align-items:center;gap:8px;padding-left:8px;border-left:1px solid var(--border)}
+.profile img{width:32px;height:32px;border-radius:999px}
+
+.profile {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  margin-left: auto;
+}
+
+.profile img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.profile-menu {
+  position: absolute;
+  right: 0;
+  top: 40px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  list-style: none;
+  padding: 5px 0;
+  width: 160px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  z-index: 10;
+}
+
+.profile-menu li {
+  padding: 10px 15px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  color: var(--text);
+}
+
+.profile-menu li:hover {
+  background: #f3f4f6;
+}
+
+.profile-menu.hidden {
+  display: none;
+}
+
+.profile-menu.show {
+  display: block;
+}
+
+/* ===========================
+   Existing Inventory CSS
+=========================== */
+.container {
+  max-width: 1200px;
+  margin: 30px auto;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 2rem;
+  color: var(--text);
+}
+
+/* Filters */
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.brand-filter {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.brand-filter span {
+  font-weight: 600;
+}
+
+.brand-btn {
+  padding: 6px 12px;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background: #fff;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.brand-btn.active {
+  background: var(--green);
+  color: #fff;
+  border-color: var(--green);
+}
+
+.brand-btn:hover {
+  opacity: 0.85;
+}
+
+#searchInput {
+  padding: 6px 10px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 0.95rem;
+  flex-grow: 1;
+}
+
+/* Inventory Section */
+.inventory-section {
+  background: var(--card);
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+  margin-bottom: 20px;
+}
+
+.inventory-section h2 {
+  margin-bottom: 10px;
+  font-size: 1.4rem;
+  color: var(--text);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+thead {
+  background: #f9fafb;
+}
+
+th, td {
+  padding: 12px 15px;
+  border: 1px solid var(--border);
+  text-align: left;
+  font-size: 0.95rem;
+}
+
+th {
+  color: var(--muted);
+  font-weight: 600;
+}
+
+tbody tr:hover {
+  background: #f3f4f6;
+}
+
+button.edit, button.delete {
+  padding: 6px 12px;
+  font-size: 0.85rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-right: 6px;
+  transition: background 0.2s;
+}
+
+button.edit {
+  background: var(--green);
+  color: #fff;
+}
+button.edit:hover {
+  background: var(--green-hover);
+}
+
+button.delete {
+  background: var(--danger);
+  color: #fff;
+}
+button.delete:hover {
+  background: var(--danger-hover);
+}
+
+.add-btn {
+  background: var(--green);
+  border: none;
+  color: #fff;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.add-btn:hover {
+  background: var(--green-hover);
+}
+
+/* Modal */
+.modal {
+  position: fixed;
+  top:0; left:0; width:100%; height:100%;
+  background: rgba(0,0,0,0.5);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 1000;
+}
+.hidden { display: none; }
+
+.modal-content {
+  background: var(--card);
+  padding: 20px;
+  border-radius: 12px;
+  width: 400px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+}
+.modal-content h3 { margin-top:0 }
+
+.modal-content label { display:block; margin-top:10px; font-size:0.9rem; }
+.modal-content input, .modal-content select {
+  width:100%; padding:8px; margin-top:4px;
+  border:1px solid var(--border); border-radius:6px;
+}
+
+.modal-actions {
+  margin-top:15px; display:flex; justify-content:flex-end; gap:10px;
+}
+.save-btn {
+  background: var(--green); color:#fff; border:none; padding:8px 14px; border-radius:6px; cursor:pointer;
+}
+.save-btn:hover { background: var(--green-hover); }
+.cancel-btn {
+  background: var(--danger); color:#fff; border:none; padding:8px 14px; border-radius:6px; cursor:pointer;
+}
+.cancel-btn:hover { background: var(--danger-hover); }

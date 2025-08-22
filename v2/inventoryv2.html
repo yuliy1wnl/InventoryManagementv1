@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GPU Inventory Management</title>
+  <link rel="stylesheet" href="dashboard.css">
+  <link rel="stylesheet" href="inventoryv2.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+  <div class="app-shell">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="logo">
+        <i class="fa-solid fa-box-open"></i>
+        <span>InvManage</span>
+      </div>
+      <nav>
+        <ul class="menu">
+          <li class="menu-item"><i class="fa-solid fa-gauge"></i><span>Dashboard</span></li>
+          <li class="menu-item active"><i class="fa-solid fa-boxes-stacked"></i><span>Inventory</span></li>
+          <li class="menu-item"><i class="fa-solid fa-cart-shopping"></i><span>Sales</span></li>
+          <li class="menu-item"><i class="fa-solid fa-chart-line"></i><span>Reports</span></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Main -->
+    <main class="main">
+      <!-- Topbar -->
+      <header class="topbar"> 
+        <div class="top-actions">
+          <button class="icon-btn"><i class="fa-regular fa-bell"></i></button>
+          <button class="icon-btn"><i class="fa-solid fa-gear"></i></button>
+          <div class="profile" id="profileDropdown">
+            <div class="profile-trigger">
+              <span id="profileName">Admin</span>
+              <i class="fa-solid fa-chevron-down"></i>
+              <img src="https://i.pravatar.cc/40" alt="Profile"/>
+            </div>
+            <ul class="profile-menu hidden">
+              <li id="viewProfileBtn"><i class="fa-solid fa-user"></i> View Profile</li>
+              <li id="logoutBtn"><i class="fa-solid fa-right-from-bracket"></i> Logout</li>
+            </ul>
+          </div>
+        </div>
+      </header>
+
+      <!-- Inventory Content -->
+      <div class="container">
+        <h1>GPU Inventory Management</h1>
+
+        <!-- Filters -->
+        <div class="filters">
+          <div class="brand-filter">
+            <span>Filter by Brand:</span>
+            <button class="brand-btn active" data-brand="NVIDIA">NVIDIA</button>
+            <button class="brand-btn active" data-brand="AMD">AMD</button>
+            <button class="brand-btn active" data-brand="Intel">Intel</button>
+          </div>
+
+          <input type="text" id="searchInput" placeholder="Search by Product ID or Name">
+          <button class="add-btn" id="addProductBtn">+ Add Product</button>
+        </div>
+
+        <!-- Inventory Sections -->
+        <div id="inventoryContainer">
+          <!-- NVIDIA, AMD, Intel sections remain as before -->
+        </div>
+      </div>
+
+      <!-- Modal -->
+      <div class="modal hidden" id="productModal">
+        <div class="modal-content">
+          <h3 id="modalTitle">Add Product</h3>
+          <form id="productForm">
+            <label>Brand</label>
+            <select id="productBrand" required>
+              <option value="NVIDIA">NVIDIA</option>
+              <option value="AMD">AMD</option>
+              <option value="Intel">Intel</option>
+            </select>
+
+            <input type="hidden" id="editRowId">
+
+            <label>Product ID</label>
+            <input type="text" id="productId" required>
+
+            <label>Product Name</label>
+            <input type="text" id="productName" required>
+
+            <label>Stock</label>
+            <input type="number" id="productStock" min="0" required>
+
+            <label>Price ($)</label>
+            <input type="number" id="productPrice" min="0" required>
+
+            <div class="modal-actions">
+              <button type="submit" class="save-btn">Save</button>
+              <button type="button" class="cancel-btn">Cancel</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="dashboard.js"></script>
+  <script src="inventoryv2.js"></script>
+</body>
+</html>

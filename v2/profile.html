@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Profile</title>
+  <link rel="stylesheet" href="profile.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+  <div class="profile-container">
+    <div class="profile-card">
+      <img src="https://i.pravatar.cc/120" alt="Profile Picture" class="profile-pic">
+      <h2 id="profileName">User Name</h2>
+      <p class="role">Inventory Manager</p>
+
+      <div class="profile-info">
+        <p><i class="fa-solid fa-user"></i> <span id="fullName">John Doe</span></p>
+        <p><i class="fa-solid fa-envelope"></i> <span id="email">john@example.com</span></p>
+        <p><i class="fa-solid fa-id-badge"></i> <span id="username">johndoe</span></p>
+      </div>
+
+      <div class="profile-actions">
+        <button id="backBtn" class="btn">← Back to Dashboard</button>
+        <button id="logoutBtn" class="btn danger">Logout</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="profile.js"></script>
+</body>
+</html>
